@@ -1,0 +1,19 @@
+﻿2026-11-10 20:37:28 [INFO] ============================================================
+2026-11-10 20:37:28 [INFO] Inicio simulacro | destino=volttech_u6_restore_test | usuario=mant_restore | host=localhost:5432
+2026-11-10 20:37:28 [INFO] Preflight de conexiones OK: rolconnlimit=10 (pg_restore -j 4 requiere >= 5).
+2026-11-10 20:37:28 [INFO] Respaldo a probar: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\backups\volttech_u6_20261110_203628.dump (11.332.222 bytes, 2026-11-10 20:36:30)
+2026-11-10 20:37:28 [INFO] SHA-256 verificado: 621D798175B2077F1C6638818FBD9392B470B6CA67973E3164B1E4E364E92C13
+2026-11-10 20:37:28 [INFO] pg_restore --list OK (58 entradas).
+2026-11-10 20:37:28 [INFO] Snapshot de conteos: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\logs\counts_volttech_u6_20261110_203628.txt (7 controles)
+2026-11-10 20:37:28 [INFO] Cronometro iniciado. Creando 'volttech_u6_restore_test'...
+2026-11-10 20:37:29 [INFO] Restaurando 'volttech_u6_20261110_203628.dump' en 'volttech_u6_restore_test'...
+2026-11-10 20:37:34 [INFO] pg_restore finalizo sin errores.
+2026-11-10 20:37:34 [INFO] Conteos coincidentes con el snapshot (7 controles).
+2026-11-10 20:37:35 [INFO] Validaciones: productos_invalidos=0 detalles_invalidos=0 huerfanos=0 restricciones=16 vista_detalle_pedido=detalle_pedido
+2026-11-10 20:37:36 [INFO] Evidencia de validaciones: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\logs\restore_validaciones_20261110_203728.txt
+2026-11-10 20:37:36 [INFO] RTO observado: 7,60 s (objetivo <= 1200 s) -> CUMPLE
+2026-11-10 20:37:36 [INFO] RPO observado: 58 s (~0,0 h) (objetivo <= 86.400 s) -> CUMPLE
+2026-11-10 20:37:36 [INFO] Base 'volttech_u6_restore_test' conservada para inspeccion. Limpieza manual: dropdb -h localhost -U postgres --if-exists volttech_u6_restore_test
+2026-11-10 20:37:36 [INFO] Metricas: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\logs\restore_metrics_20261110_203728.json
+2026-11-10 20:37:36 [INFO] RESULTADO: SIMULACRO VALIDADO
+2026-11-10 20:37:36 [INFO] ============================================================

@@ -1,0 +1,73 @@
+;
+; Archive created at 2026-11-10 20:36:28
+;     dbname: volttech_u6
+;     TOC Entries: 62
+;     Compression: gzip
+;     Dump Version: 1.16-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 17.10
+;     Dumped by pg_dump version: 17.10
+;
+;
+; Selected TOC Entries:
+;
+7; 2615 16696 SCHEMA - mantenimiento postgres
+5057; 0 0 ACL - SCHEMA mantenimiento postgres
+2; 3079 16575 EXTENSION - pg_trgm 
+5058; 0 0 COMMENT - EXTENSION pg_trgm 
+898; 1247 16493 TYPE public forma_pago postgres
+280; 1255 16685 PROCEDURE public ajustar_stock(bigint, integer, integer) postgres
+279; 1255 16684 PROCEDURE public registrar_pedido(bigint, public.forma_pago, jsonb, bigint) postgres
+235; 1259 16698 TABLE mantenimiento bitacora postgres
+5059; 0 0 ACL mantenimiento TABLE bitacora postgres
+234; 1259 16697 SEQUENCE mantenimiento bitacora_id_seq postgres
+5060; 0 0 ACL mantenimiento SEQUENCE bitacora_id_seq postgres
+222; 1259 16502 TABLE public categoria postgres
+221; 1259 16501 SEQUENCE public categoria_id_seq postgres
+226; 1259 16532 TABLE public cliente postgres
+225; 1259 16531 SEQUENCE public cliente_id_seq postgres
+229; 1259 16554 TABLE public linea_pedido postgres
+236; 1259 16710 VIEW public detalle_pedido postgres
+228; 1259 16542 TABLE public pedido postgres
+224; 1259 16512 TABLE public producto postgres
+233; 1259 16671 MATERIALIZED VIEW public mv_facturacion_categoria_mes postgres
+227; 1259 16541 SEQUENCE public pedido_id_seq postgres
+223; 1259 16511 SEQUENCE public producto_id_seq postgres
+232; 1259 16666 VIEW public v_detalle_pedido_producto postgres
+231; 1259 16662 VIEW public v_pedidos_cliente postgres
+230; 1259 16658 VIEW public v_productos_vigentes postgres
+5050; 0 16698 TABLE DATA mantenimiento bitacora postgres
+5040; 0 16502 TABLE DATA public categoria postgres
+5044; 0 16532 TABLE DATA public cliente postgres
+5047; 0 16554 TABLE DATA public linea_pedido postgres
+5046; 0 16542 TABLE DATA public pedido postgres
+5042; 0 16512 TABLE DATA public producto postgres
+5061; 0 0 SEQUENCE SET mantenimiento bitacora_id_seq postgres
+5062; 0 0 SEQUENCE SET public categoria_id_seq postgres
+5063; 0 0 SEQUENCE SET public cliente_id_seq postgres
+5064; 0 0 SEQUENCE SET public pedido_id_seq postgres
+5065; 0 0 SEQUENCE SET public producto_id_seq postgres
+4883; 2606 16708 CONSTRAINT mantenimiento bitacora bitacora_pkey postgres
+4860; 2606 16510 CONSTRAINT public categoria categoria_nombre_key postgres
+4862; 2606 16508 CONSTRAINT public categoria categoria_pkey postgres
+4871; 2606 16540 CONSTRAINT public cliente cliente_email_key postgres
+4873; 2606 16538 CONSTRAINT public cliente cliente_pkey postgres
+4880; 2606 16560 CONSTRAINT public linea_pedido linea_pedido_pkey postgres
+4877; 2606 16548 CONSTRAINT public pedido pedido_pkey postgres
+4867; 2606 16525 CONSTRAINT public producto producto_categoria_id_nombre_key postgres
+4869; 2606 16523 CONSTRAINT public producto producto_pkey postgres
+4884; 1259 16709 INDEX mantenimiento idx_bitacora_tarea_estado_fin postgres
+4878; 1259 16574 INDEX public idx_linea_pedido_producto postgres
+4874; 1259 16571 INDEX public idx_pedido_cliente postgres
+4875; 1259 16573 INDEX public idx_pedido_fecha postgres
+4863; 1259 16572 INDEX public idx_producto_categoria postgres
+4864; 1259 16656 INDEX public idx_producto_nombre_trgm postgres
+4865; 1259 16657 INDEX public idx_producto_stock_parcial postgres
+4881; 1259 16683 INDEX public mv_facturacion_cat_mes_uniq postgres
+4887; 2606 16561 FK CONSTRAINT public linea_pedido linea_pedido_pedido_id_fkey postgres
+4888; 2606 16566 FK CONSTRAINT public linea_pedido linea_pedido_producto_id_fkey postgres
+4886; 2606 16549 FK CONSTRAINT public pedido pedido_cliente_id_fkey postgres
+4885; 2606 16526 FK CONSTRAINT public producto producto_categoria_id_fkey postgres
+5048; 0 16671 MATERIALIZED VIEW DATA public mv_facturacion_categoria_mes postgres

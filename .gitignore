@@ -1,0 +1,4 @@
+# Archivos generados en cada corrida: se regeneran y no forman parte de la entrega.
+backups/
+logs/
+__pycache__/

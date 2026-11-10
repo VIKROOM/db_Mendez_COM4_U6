@@ -1,0 +1,107 @@
+PASS  Archivo: SPEC_U6.md
+PASS  Archivo: backup_volttech.ps1
+PASS  Archivo: health_check.sql
+PASS  Archivo: maintenance.sql
+PASS  Archivo: restore_test.ps1
+PASS  Archivo: informe_u6.md
+PASS  Archivo: informe_u6.pdf
+PASS  Archivo: BITACORA_IA.md
+PASS  Archivo: README.md
+PASS  Archivo: soporte\00_preparacion_entorno.sql
+PASS  Archivo: soporte\01_roles_mantenimiento.sql
+PASS  Archivo: soporte\02_simular_actividad.sql
+PASS  Archivo: soporte\setup_pgpass.ps1
+PASS  Archivo: soporte\conteos_validacion.sql
+PASS  Archivo: soporte\validaciones_restauracion.sql
+PASS  Archivo: informe_u6.pdf
+PASS  Plan incluye (SPEC_U6.md)  -> Diaria
+PASS  Plan incluye (SPEC_U6.md)  -> Semanal
+PASS  Plan incluye (SPEC_U6.md)  -> RPO
+PASS  Plan incluye (SPEC_U6.md)  -> RTO
+PASS  Plan incluye (SPEC_U6.md)  -> volttech_u6_restore_test
+PASS  Plan incluye (SPEC_U6.md)  -> pgpass.conf
+PASS  Plan incluye (SPEC_U6.md)  -> VACUUM FULL
+PASS  SPEC_U6.md compacta (<= 90 lineas)  -> 37 lineas
+PASS  Respaldo usa (backup_volttech.ps1)  -> pg_dump
+PASS  Respaldo usa (backup_volttech.ps1)  -> -Fc
+PASS  Respaldo usa (backup_volttech.ps1)  -> yyyyMMdd_HHmmss
+PASS  Respaldo usa (backup_volttech.ps1)  -> pg_restore
+PASS  Respaldo usa (backup_volttech.ps1)  -> --list
+PASS  Respaldo usa (backup_volttech.ps1)  -> Get-FileHash
+PASS  Respaldo usa (backup_volttech.ps1)  -> SHA256
+PASS  Respaldo usa (backup_volttech.ps1)  -> $LASTEXITCODE
+PASS  Respaldo usa (backup_volttech.ps1)  -> mant_backup
+PASS  Respaldo usa (backup_volttech.ps1)  -> RetencionDias
+PASS  Respaldo usa (backup_volttech.ps1)  -> .parcial
+PASS  Respaldo usa (backup_volttech.ps1)  -> mantenimiento.bitacora
+PASS  Respaldo aborta ante error (backup_volttech.ps1)  -> ^\s*\$ErrorActionPreference\s*=\s*'Stop'
+PASS  Respaldo sin contrasenas embebidas
+PASS  health_check controla (health_check.sql)  -> pg_database_size
+PASS  health_check controla (health_check.sql)  -> pg_stat_database
+PASS  health_check controla (health_check.sql)  -> pg_stat_user_tables
+PASS  health_check controla (health_check.sql)  -> pg_stat_activity
+PASS  health_check controla (health_check.sql)  -> n_dead_tup
+PASS  health_check controla (health_check.sql)  -> last_autovacuum
+PASS  health_check controla (health_check.sql)  -> numbackends
+PASS  health_check controla (health_check.sql)  -> state <> 'idle'
+PASS  maintenance revisa/ejecuta (maintenance.sql)  -> autovacuum
+PASS  maintenance revisa/ejecuta (maintenance.sql)  -> n_dead_tup
+PASS  maintenance revisa/ejecuta (maintenance.sql)  -> VACUUM (ANALYZE
+PASS  maintenance revisa/ejecuta (maintenance.sql)  -> \gexec
+PASS  maintenance revisa/ejecuta (maintenance.sql)  -> mantenimiento.bitacora
+PASS  maintenance revisa/ejecuta (maintenance.sql)  -> last_autoanalyze
+PASS  maintenance.sql NO ejecuta VACUUM FULL
+PASS  restore_test implementa (restore_test.ps1)  -> volttech_u6_restore_test
+PASS  restore_test implementa (restore_test.ps1)  -> createdb
+PASS  restore_test implementa (restore_test.ps1)  -> pg_restore
+PASS  restore_test implementa (restore_test.ps1)  -> --no-owner
+PASS  restore_test implementa (restore_test.ps1)  -> --no-privileges
+PASS  restore_test implementa (restore_test.ps1)  -> --exit-on-error
+PASS  restore_test implementa (restore_test.ps1)  -> productos_invalidos
+PASS  restore_test implementa (restore_test.ps1)  -> detalles_invalidos
+PASS  restore_test implementa (restore_test.ps1)  -> Stopwatch
+PASS  restore_test implementa (restore_test.ps1)  -> rto_segundos
+PASS  restore_test implementa (restore_test.ps1)  -> rpo_segundos
+PASS  restore_test implementa (restore_test.ps1)  -> conteos_validacion.sql
+PASS  restore_test implementa (restore_test.ps1)  -> _restore_test
+PASS  restore_test implementa (restore_test.ps1)  -> mant_restore
+PASS  restore_test protege volttech_u6 (restore_test.ps1)  -> BaseDestino\s*-\s*eq\s*'volttech_u6'|BaseDestino\s*-eq\s*'volttech_u6'
+PASS  Informe incluye (informe_u6.md)  -> RPO
+PASS  Informe incluye (informe_u6.md)  -> RTO
+PASS  Informe incluye (informe_u6.md)  -> OpenCode
+PASS  Informe incluye (informe_u6.md)  -> mejora
+PASS  Informe incluye (informe_u6.md)  -> respaldo
+PASS  Informe incluye (informe_u6.md)  -> valid
+PASS  Informe incluye (informe_u6.md)  -> volttech_u6_restore_test
+PASS  Informe incluye (informe_u6.md)  -> problema
+PASS  Archivo: evidencias\backup_ejecucion.log
+PASS  Archivo: evidencias\backup_listado.txt
+PASS  Archivo: evidencias\backup_sha256.txt
+PASS  Archivo: evidencias\health_check_antes.txt
+PASS  Archivo: evidencias\health_check_despues.txt
+PASS  Archivo: evidencias\maintenance_salida.txt
+PASS  Archivo: evidencias\restore_ejecucion.log
+PASS  Archivo: evidencias\restore_validaciones.txt
+PASS  Archivo: evidencias\restore_metrics.json
+PASS  Archivo: evidencias\fallo_pg_dump.log
+PASS  volttech_u6 poblada (producto > 0)  -> 50002 filas
+PASS  Vista public.detalle_pedido existe  -> detalle_pedido
+PASS  Bitacora con respaldo OK  -> 1 filas
+PASS  Bitacora con mantenimiento OK  -> 1 filas
+PASS  mant_backup no es superusuario  -> rolsuper=f
+PASS  mant_backup no puede INSERT en producto  -> insert=f
+PASS  mant_backup puede INSERT en bitacora  -> insert=t
+PASS  mant_restore tiene CREATEDB  -> createdb=t
+PASS  volttech_u6_restore_test existe  -> 1
+PASS  volttech_u6_restore_test poblada  -> 50002 filas
+PASS  El .dump mas reciente es legible  -> volttech_u6_20261110_203628.dump
+PASS  Resultado del simulacro OK  -> resultado=OK
+PASS  RTO observado presente y > 0  -> 7.6 s
+PASS  RPO observado presente  -> 58 s
+PASS  Conteos coinciden  -> True
+PASS  Invalidos en cero  -> prod=0 det=0
+
+============================================================
+RESULTADO: 102 PASS / 0 FAIL
+Fecha: 2026-11-10 20:48:52
+============================================================
