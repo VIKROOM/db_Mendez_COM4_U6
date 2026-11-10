@@ -1,4 +1,4 @@
-# Archivos generados en cada corrida: se regeneran y no forman parte de la entrega.
+# Los dumps se regeneran en cada corrida y no forman parte de la entrega.
+# Los logs de cada corrida sí se versionan como evidencia.
 backups/
-logs/
 __pycache__/

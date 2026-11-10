@@ -1,0 +1,153 @@
+El estilo de borde es 2.
+El paginador no se usar�.
+============================================================
+ MANTENIMIENTO - VoltTech
++-------------------------------+-------------+----------+
+|            momento            |    base     | usuario  |
++-------------------------------+-------------+----------+
+| 2026-11-10 20:35:44.050973-03 | volttech_u6 | postgres |
++-------------------------------+-------------+----------+
+(1 fila)
+
+
+=== 1. CONTEXTO: PARAMETROS DE AUTOVACUUM ===
++---------------------------------+---------+------+
+|              name               | setting | unit |
++---------------------------------+---------+------+
+| autovacuum                      | on      |      |
+| autovacuum_analyze_scale_factor | 0.1     |      |
+| autovacuum_analyze_threshold    | 50      |      |
+| autovacuum_max_workers          | 3       |      |
+| autovacuum_naptime              | 60      | s    |
+| autovacuum_vacuum_scale_factor  | 0.2     |      |
+| autovacuum_vacuum_threshold     | 50      |      |
+| maintenance_work_mem            | 65536   | kB   |
+| vacuum_cost_delay               | 0       | ms   |
++---------------------------------+---------+------+
+(9 filas)
+
+
+--- Overrides por tabla (si existen) ---
++-------+------------+
+| tabla | reloptions |
++-------+------------+
++-------+------------+
+(0 filas)
+
+
+=== 2. TRANSACCIONES LARGAS QUE PUEDEN IMPEDIR LA LIMPIEZA ===
++-----+---------+-------+---------+----------+
+| pid | usename | state | minutos | consulta |
++-----+---------+-------+---------+----------+
++-----+---------+-------+---------+----------+
+(0 filas)
+
+
+=== 3. OBSERVACION PREVIA Y DECISION ===
++------------------------------+--------+---------+-------------+-------------------------------+-------------------------------+--------------------+
+|            tabla             | vivas  | muertas | pct_muertas |        last_autovacuum        |       last_autoanalyze        |      decision      |
++------------------------------+--------+---------+-------------+-------------------------------+-------------------------------+--------------------+
+| producto                     |  50002 |    5000 |        9.09 | 2026-11-10 20:22:40.932669-03 | 2026-11-10 20:22:41.458554-03 | VACUUM (ANALYZE)   |
+| categoria                    |      2 |       0 |        0.00 |                               |                               | ESPERAR AUTOVACUUM |
+| cliente                      |  20001 |       0 |        0.00 | 2026-11-10 20:22:41.498492-03 | 2026-11-10 20:22:41.72466-03  | ESPERAR AUTOVACUUM |
+| linea_pedido                 | 800002 |       0 |        0.00 | 2026-11-10 20:23:11.428234-03 |                               | ESPERAR AUTOVACUUM |
+| mv_facturacion_categoria_mes |     26 |       0 |        0.00 |                               |                               | ESPERAR AUTOVACUUM |
+| pedido                       | 200001 |       0 |        0.00 | 2026-11-10 20:22:42.002452-03 | 2026-11-10 20:22:42.169562-03 | ESPERAR AUTOVACUUM |
++------------------------------+--------+---------+-------------+-------------------------------+-------------------------------+--------------------+
+(6 filas)
+
+DROP TABLE
+psql:maintenance.sql:95: NOTICE:  la tabla «tmp_mantenimiento» no existe, omitiendo
+SELECT 1
+
+--- Tablas seleccionadas para VACUUM (ANALYZE) ---
++------------+----------+------------+------------+-------------+
+| schemaname | relname  | n_live_tup | n_dead_tup | pct_muertas |
++------------+----------+------------+------------+-------------+
+| public     | producto |      50002 |       5000 |        9.09 |
++------------+----------+------------+------------+-------------+
+(1 fila)
+
+
+=== 4. ACCION SEGURA: VACUUM (ANALYZE) SOLO EN LAS TABLAS SELECCIONADAS ===
+Se ejecuta una sentencia por tabla. No se usa VACUUM FULL.
+El despliegue de duraci�n est� activado.
+psql:maintenance.sql:121: INFO:  haciendo vacuum a «volttech_u6.public.producto»
+psql:maintenance.sql:121: INFO:  se lanzaron 2 procesos asistentes para «vacuum» índices (planeados: 2)
+psql:maintenance.sql:121: INFO:  se terminó el vacuum de «volttech_u6.public.producto»: recorridos de índice: 1
+páginas: 0 eliminadas, 785 quedan, 785 recorridas (100.00% del total)
+tuplas: 5000 eliminadas, 50002 permanecen, 0 están muertas pero aún no se pueden quitar
+punto de corte de eliminación: 881, que era 0 XIDs de antiguo cuando la operación terminó
+congelado: 0 páginas de la tabla (0.00% del total) tuvieron 0 tuplas congeladas
+recorrido de índice necesario: en 714 páginas de la tabla (90.96% del total) se eliminaron 5000 identificadores de elementos muertos
+índice «producto_pkey»: páginas: 139 en total, 0 recientemente eliminadas, 0 eliminadas hasta ahora, 0 reusables
+índice «producto_categoria_id_nombre_key»: páginas: 435 en total, 0 recientemente eliminadas, 0 eliminadas hasta ahora, 0 reusables
+índice «idx_producto_categoria»: páginas: 46 en total, 0 recientemente eliminadas, 0 eliminadas hasta ahora, 0 reusables
+índice «idx_producto_nombre_trgm»: páginas: 367 en total, 0 recientemente eliminadas, 170 eliminadas hasta ahora, 170 reusables
+índice «idx_producto_stock_parcial»: páginas: 5 en total, 0 recientemente eliminadas, 0 eliminadas hasta ahora, 0 reusables
+tasa lectura promedio: 0.000 MB/s, tasa escritura promedio: 3.437 MB/s
+uso de búfers: 6387 aciertos, 0 fallos, 23 ensuciados
+uso de WAL: 3867 registros, 119 imágenes de página completa, 1459836 bytes
+uso de sistema: CPU: usuario: 0.01 s, sistema: 0.01 s, transcurrido: 0.05 s
+psql:maintenance.sql:121: INFO:  haciendo vacuum a «volttech_u6.pg_toast.pg_toast_16512»
+psql:maintenance.sql:121: INFO:  se terminó el vacuum de «volttech_u6.pg_toast.pg_toast_16512»: recorridos de índice: 0
+páginas: 0 eliminadas, 0 quedan, 0 recorridas (100.00% del total)
+tuplas: 0 eliminadas, 0 permanecen, 0 están muertas pero aún no se pueden quitar
+punto de corte de eliminación: 881, que era 0 XIDs de antiguo cuando la operación terminó
+nuevo relfrozenxid: 881, que está 61 XIDs más adelante del valor anterior
+congelado: 0 páginas de la tabla (100.00% del total) tuvieron 0 tuplas congeladas
+recorrido de índice no necesario: en 0 páginas de la tabla (100.00% del total) se eliminaron 0 identificadores de elementos muertos
+tasa lectura promedio: 7.141 MB/s, tasa escritura promedio: 0.000 MB/s
+uso de búfers: 28 aciertos, 1 fallos, 0 ensuciados
+uso de WAL: 1 registros, 0 imágenes de página completa, 188 bytes
+uso de sistema: CPU: usuario: 0.00 s, sistema: 0.00 s, transcurrido: 0.00 s
+psql:maintenance.sql:121: INFO:  analizando «public.producto»
+psql:maintenance.sql:121: INFO:  «producto»: se procesaron 785 de 785 páginas, que contenían 50002 filas vigentes y 0 filas no vigentes; 30000 filas en la muestra, 50002 total de filas estimadas
+VACUUM
+Duraci�n: 446,815 ms
+Duraci�n: 0,192 ms
+El despliegue de duraci�n est� desactivado.
+
+=== 5. ESTADISTICAS: ANALYZE DE TABLAS CON ESTADISTICAS VIEJAS ===
+ANALYZE es seguro: no toma bloqueo exclusivo ni reescribe la tabla.
+El despliegue de duraci�n est� activado.
+ANALYZE
+Duraci�n: 1,733 ms
+ANALYZE
+Duraci�n: 71,518 ms
+ANALYZE
+Duraci�n: 1,792 ms
+Duraci�n: 0,967 ms
+El despliegue de duraci�n est� desactivado.
+
+=== 6. REGISTRO EN LA BITACORA ===
+INSERT 0 1
++----+----------------------+-------------------------------+--------+-------+---------------------------------------------------------------------------------------------------------+
+| id |        tarea         |              fin              | estado | filas |                                                 detalle                                                 |
++----+----------------------+-------------------------------+--------+-------+---------------------------------------------------------------------------------------------------------+
+|  1 | mantenimiento_manual | 2026-11-10 20:35:44.601805-03 | OK     |  5000 | VACUUM (ANALYZE) en 1 tabla(s): producto; umbral 5%/1000 o 10000 tuplas muertas; VACUUM FULL descartado |
++----+----------------------+-------------------------------+--------+-------+---------------------------------------------------------------------------------------------------------+
+(1 fila)
+
+
+=== 7. VERIFICACION POSTERIOR ===
++------------------------------+--------+---------+-------------+-------------------------------+-------------------------------+-------------------------------+-------------------------------+
+|            tabla             | vivas  | muertas | pct_muertas |          last_vacuum          |        last_autovacuum        |         last_analyze          |       last_autoanalyze        |
++------------------------------+--------+---------+-------------+-------------------------------+-------------------------------+-------------------------------+-------------------------------+
+| categoria                    |      2 |       0 |        0.00 |                               |                               | 2026-11-10 20:35:44.527156-03 |                               |
+| cliente                      |  20001 |       0 |        0.00 |                               | 2026-11-10 20:22:41.498492-03 | 2026-11-10 20:22:47.264609-03 | 2026-11-10 20:22:41.72466-03  |
+| linea_pedido                 | 800002 |       0 |        0.00 |                               | 2026-11-10 20:23:11.428234-03 | 2026-11-10 20:35:44.597401-03 |                               |
+| mv_facturacion_categoria_mes |     26 |       0 |        0.00 |                               |                               | 2026-11-10 20:35:44.60059-03  |                               |
+| pedido                       | 200001 |       0 |        0.00 |                               | 2026-11-10 20:22:42.002452-03 | 2026-11-10 20:22:47.304499-03 | 2026-11-10 20:22:42.169562-03 |
+| producto                     |  50002 |       0 |        0.00 | 2026-11-10 20:35:44.130101-03 | 2026-11-10 20:22:40.932669-03 | 2026-11-10 20:35:44.523254-03 | 2026-11-10 20:22:41.458554-03 |
++------------------------------+--------+---------+-------------+-------------------------------+-------------------------------+-------------------------------+-------------------------------+
+(6 filas)
+
+
+--- Recomendacion (no ejecutada): para tablas de alta escritura conviene
+    bajar el scale factor de autovacuum en vez de vaciar manualmente cada semana.
+    Ejemplo, a evaluar con la historia real de la tabla:
+      ALTER TABLE public.linea_pedido SET (autovacuum_vacuum_scale_factor = 0.05,
+                                           autovacuum_analyze_scale_factor = 0.02);
+
+=== FIN MANTENIMIENTO ===

@@ -1,0 +1,23 @@
+{
+    "fecha_simulacro":  "2026-11-10T20:37:28.4553839-03:00",
+    "respaldo_archivo":  "volttech_u6_20261110_203628.dump",
+    "respaldo_fecha":  "2026-11-10 20:36:30",
+    "respaldo_bytes":  11332222,
+    "respaldo_sha256":  "621D798175B2077F1C6638818FBD9392B470B6CA67973E3164B1E4E364E92C13",
+    "base_destino":  "volttech_u6_restore_test",
+    "rto_segundos":  7.6,
+    "rto_previsto_seg":  1200,
+    "rto_cumple":  true,
+    "rpo_segundos":  58,
+    "rpo_previsto_seg":  86400,
+    "rpo_cumple":  true,
+    "conteos_coinciden":  true,
+    "productos_invalidos":  0,
+    "detalles_invalidos":  0,
+    "huerfanos":  0,
+    "restricciones":  16,
+    "validaciones":  "OK: conteos, invalid=0, huerfanos=0, restricciones y vista",
+    "resultado":  "OK",
+    "error":  "",
+    "base_conservada":  true
+}

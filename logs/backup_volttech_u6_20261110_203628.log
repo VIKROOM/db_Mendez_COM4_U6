@@ -1,0 +1,14 @@
+﻿2026-11-10 20:36:28 [INFO] ============================================================
+2026-11-10 20:36:28 [INFO] Inicio respaldo | base=volttech_u6 | usuario=mant_backup | host=localhost:5432
+2026-11-10 20:36:28 [INFO] Destino=D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\backups | retencion=14d | PostgreSQL bin=C:\Program Files\PostgreSQL\17\bin
+2026-11-10 20:36:28 [INFO] Archivo objetivo: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\backups\volttech_u6_20261110_203628.dump
+2026-11-10 20:36:28 [INFO] Snapshot de conteos: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\logs\counts_volttech_u6_20261110_203628.txt (7 controles)
+2026-11-10 20:36:28 [INFO] Ejecutando pg_dump -Fc -Z 6 sobre 'volttech_u6'...
+2026-11-10 20:36:30 [INFO] pg_dump OK: 11.332.222 bytes (10,81 MB)
+2026-11-10 20:36:30 [INFO] Verificacion pg_restore --list OK (58 entradas en el TOC)
+2026-11-10 20:36:30 [INFO] SHA-256: 621D798175B2077F1C6638818FBD9392B470B6CA67973E3164B1E4E364E92C13
+2026-11-10 20:36:30 [INFO] Respaldo valido: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\backups\volttech_u6_20261110_203628.dump
+2026-11-10 20:36:30 [INFO] Retencion aplicada: 0 archivo(s) .dump/.sha256 eliminados (limite 2026-10-27 20:36)
+2026-11-10 20:36:31 [INFO] Bitacora: OK registrado en mantenimiento.bitacora
+2026-11-10 20:36:31 [INFO] Fin OK en 2.9 s. Archivo: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\backups\volttech_u6_20261110_203628.dump
+2026-11-10 20:36:31 [INFO] ============================================================

@@ -1,0 +1,10 @@
+﻿2026-11-10 20:36:44 [INFO] ============================================================
+2026-11-10 20:36:44 [INFO] Inicio respaldo | base=volttech_u6 | usuario=mant_backup | host=localhost:5432
+2026-11-10 20:36:44 [INFO] Destino=D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\backups | retencion=14d | PostgreSQL bin=C:\Program Files\PostgreSQL\17\bin
+2026-11-10 20:36:44 [INFO] Archivo objetivo: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\backups\volttech_u6_20261110_203644.dump
+2026-11-10 20:36:44 [INFO] Snapshot de conteos: D:\joako\repositorios git\bd\2do\git_U6\Mantenimiento\logs\counts_volttech_u6_20261110_203644.txt (7 controles)
+2026-11-10 20:36:44 [INFO] Ejecutando pg_dump -Fc -Z 6 sobre 'volttech_u6'...
+2026-11-10 20:36:44 [ERROR] ERROR: pg_dump: error: no se encontraron tablas coincidentes
+2026-11-10 20:36:44 [WARN] Se elimino el archivo .parcial incompleto.
+2026-11-10 20:36:44 [INFO] Bitacora: ERROR registrado en mantenimiento.bitacora
+2026-11-10 20:36:44 [INFO] ============================================================

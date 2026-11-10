@@ -86,9 +86,9 @@ MANUAL = {
          "quedó repoblada con 26 filas."],
     ],
     "publicacion": (
-        "El paquete quedó listo para publicar en github.com/VIKROOM/db_Mendez_COM4_U6: .gitignore excluye "
-        "backups/, logs/ y __pycache__, y ninguna credencial pasó por el repositorio (pgpass.conf vive en "
-        "%APPDATA%). La subida al repositorio queda a cargo del alumno."
+        "El paquete quedó publicado en github.com/VIKROOM/db_Mendez_COM4_U6 (rama main): los logs de cada "
+        "corrida se versionan como evidencia, .gitignore solo excluye backups/ y __pycache__, y ninguna "
+        "credencial pasó por el repositorio (pgpass.conf vive en %APPDATA%)."
     ),
 }
 
@@ -725,8 +725,9 @@ estructura = tabla(
         ["Raíz del TP", "SPEC_U6.md, 4 scripts, informe_u6.md/.pdf, BITACORA_IA.md, README.md, .gitignore"],
         ["soporte/", "preparación de entorno, roles, simulación de actividad, conteos, validaciones y autoevaluación"],
         ["informe/", "generadores Python (reportlab) de los tres informes PDF"],
-        ["evidencias/", "12 archivos de salida cruda de la corrida (logs, conteos, métricas, verificación)"],
-        ["backups/ y logs/", "dumps con su .sha256 y logs fechados (ignorados por git)"],
+        ["evidencias/", "13 archivos de salida cruda de la corrida (logs, conteos, métricas, verificación)"],
+        ["logs/", "logs fechados de cada corrida (versionados como evidencia)"],
+        ["backups/", "dumps con su .sha256 (regenerables, ignorados por git)"],
     ],
     [40, 140], chica=True,
 )

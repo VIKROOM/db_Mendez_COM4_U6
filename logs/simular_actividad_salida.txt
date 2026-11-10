@@ -1,0 +1,14 @@
+Antes de simular actividad:
+ relname  | n_live_tup | n_dead_tup 
+----------+------------+------------
+ producto |      50002 |          0
+(1 fila)
+
+UPDATE 5000
+Despues del UPDATE (las estadisticas pueden tardar unos segundos):
+ relname  | n_live_tup | n_dead_tup | pct_muertas 
+----------+------------+------------+-------------
+ producto |      50002 |          0 |        0.00
+(1 fila)
+
+Actividad simulada. Ejecute health_check.sql para observar el estado.

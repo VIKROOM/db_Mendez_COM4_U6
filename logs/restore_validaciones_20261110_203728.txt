@@ -1,0 +1,104 @@
+﻿=== 1. Conteos por tabla (comparar con logs/counts_*.txt) ===
++----------------+--------+
+|     tabla      | filas  |
++----------------+--------+
+| categoria      |      2 |
+| cliente        |  20001 |
+| detalle_pedido | 800002 |
+| pedido         | 200001 |
+| producto       |  50002 |
++----------------+--------+
+(5 filas)
+
+=== 2. Productos invalidos (esperado 0) ===
++---------------------+
+| productos_invalidos |
++---------------------+
+|                   0 |
++---------------------+
+(1 fila)
+
+=== 3. Detalles invalidos (esperado 0) ===
++--------------------+
+| detalles_invalidos |
++--------------------+
+|                  0 |
++--------------------+
+(1 fila)
+
+=== 4. Huerfanos referenciales (esperado 0) ===
++--------------------+-------+
+|      control       | filas |
++--------------------+-------+
+| pedido sin cliente |     0 |
+| linea sin producto |     0 |
+| linea sin pedido   |     0 |
++--------------------+-------+
+(3 filas)
+
+=== 5. Restricciones declarativas restauradas ===
++--------------+------------------------------------+---------+
+|    tabla     |              conname               | contype |
++--------------+------------------------------------+---------+
+| categoria    | categoria_pkey                     | p       |
+| categoria    | categoria_nombre_key               | u       |
+| cliente      | cliente_pkey                       | p       |
+| cliente      | cliente_email_key                  | u       |
+| linea_pedido | linea_pedido_cantidad_check        | c       |
+| linea_pedido | linea_pedido_precio_unitario_check | c       |
+| linea_pedido | linea_pedido_pedido_id_fkey        | f       |
+| linea_pedido | linea_pedido_producto_id_fkey      | f       |
+| linea_pedido | linea_pedido_pkey                  | p       |
+| pedido       | pedido_cliente_id_fkey             | f       |
+| pedido       | pedido_pkey                        | p       |
+| producto     | producto_precio_check              | c       |
+| producto     | producto_stock_check               | c       |
+| producto     | producto_categoria_id_fkey         | f       |
+| producto     | producto_pkey                      | p       |
+| producto     | producto_categoria_id_nombre_key   | u       |
++--------------+------------------------------------+---------+
+(16 filas)
+
+=== 6. Vista de compatibilidad detalle_pedido ===
++----------------------------+
+| filas_vista_detalle_pedido |
++----------------------------+
+|                     800002 |
++----------------------------+
+(1 fila)
+
+=== 7. Objetos de la aplicacion VoltTech restaurados ===
++------------------------------+---------------------+
+|            objeto            |        tipo         |
++------------------------------+---------------------+
+| mv_facturacion_categoria_mes | vista materializada |
+| v_detalle_pedido_producto    | vista               |
+| v_pedidos_cliente            | vista               |
+| v_productos_vigentes         | vista               |
++------------------------------+---------------------+
+(4 filas)
+
++-------------+---------+
+|   objeto    |  tipo   |
++-------------+---------+
+| extensiones | pg_trgm |
++-------------+---------+
+(1 fila)
+
++----------------+---------------------------------+
+|     objeto     |              tipo               |
++----------------+---------------------------------+
+| procedimientos | ajustar_stock, registrar_pedido |
++----------------+---------------------------------+
+(1 fila)
+
+=== 8. Vista materializada: definicion restaurada y repoblada ===
+pg_dump restaura las vistas materializadas sin datos; se repuebla con REFRESH.
++------------------------------------+
+| filas_mv_facturacion_categoria_mes |
++------------------------------------+
+|                                 26 |
++------------------------------------+
+(1 fila)
+
+=== FIN validaciones_restauracion.sql ===

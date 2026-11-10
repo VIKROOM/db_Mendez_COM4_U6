@@ -32,8 +32,9 @@ medidos. Todo lo reportado en los informes se ejecutó contra el motor real; las
 | `informe_u6_actividades.pdf`, `informe_u6_tareas.pdf` | Informes extendidos por actividades y por tareas |
 | `informe/` | Generadores Python (reportlab) de los tres PDF |
 | `soporte/` | Roles, entorno, simulación de actividad, conteos, validaciones, pgpass y autoevaluación |
-| `evidencias/` | 12 archivos de salida cruda de la corrida |
-| `backups/`, `logs/` | Dumps y logs fechados (ignorados por git) |
+| `evidencias/` | 13 archivos de salida cruda de la corrida |
+| `logs/` | Logs fechados de cada corrida (versionados como evidencia) |
+| `backups/` | Dumps con su `.sha256` (regenerables, ignorados por git) |
 | `BITACORA_IA.md` | Uso de OpenCode: 12 decisiones revisadas |
 
 ## Requisitos
